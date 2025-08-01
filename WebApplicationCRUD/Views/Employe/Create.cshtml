@@ -1,0 +1,98 @@
+﻿@model WebApplicationCRUD.Models.Employee
+
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="bi bi-person-plus-fill"></i> Create New Employee</h4>
+                </div>
+                <div class="card-body bg-light">
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmpFirestName" class="form-label fw-bold"></label>
+                            <input asp-for="EmpFirestName" class="form-control" placeholder="Enter First Name" />
+                            <span asp-validation-for="EmpFirestName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmpMiddleName" class="form-label fw-bold"></label>
+                            <input asp-for="EmpMiddleName" class="form-control" placeholder="Enter Middle Name" />
+                            <span asp-validation-for="EmpMiddleName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmpLastName" class="form-label fw-bold"></label>
+                            <input asp-for="EmpLastName" class="form-control" placeholder="Enter Last Name" />
+                            <span asp-validation-for="EmpLastName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmailId" class="form-label fw-bold"></label>
+                            <input asp-for="EmailId" class="form-control" placeholder="example@domain.com" />
+                            <span asp-validation-for="EmailId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PhoneNumber" class="form-label fw-bold"></label>
+                            <input asp-for="PhoneNumber" class="form-control" placeholder="Enter Phone Number" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmpAddress" class="form-label fw-bold"></label>
+                            <input asp-for="EmpAddress" class="form-control" placeholder="Enter Address" />
+                            <span asp-validation-for="EmpAddress" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Salary" class="form-label fw-bold"></label>
+                            <input asp-for="Salary" class="form-control" placeholder="Enter Salary" />
+                            <span asp-validation-for="Salary" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Dept_Id" class="form-label fw-bold">Department</label>
+                            <select asp-for="Dept_Id" class="form-select">
+                                <option value="">-- Select Department --</option>
+                                @foreach (var item in ViewBag.Departments)
+                                {
+                                    <option value="@item.Dept_Id">@item.DepartmentName</option>
+                                }
+                            </select>
+                            <span asp-validation-for="Dept_Id" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" asp-for="EmpStatus" />
+                            <label class="form-check-label fw-bold" asp-for="EmpStatus">
+                                @Html.DisplayNameFor(model => model.EmpStatus)
+                            </label>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-check-circle"></i> Save Employee
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Back to List
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

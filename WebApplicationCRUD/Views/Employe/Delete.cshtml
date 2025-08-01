@@ -1,0 +1,74 @@
+﻿@model WebApplicationCRUD.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<style>
+    h1 {
+        color: #dc3545;
+        font-weight: 600;
+    }
+
+    dt {
+        font-weight: 600;
+        color: #333;
+    }
+
+    dd {
+        color: #555;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="card shadow border-danger">
+        <div class="card-header bg-danger text-white">
+            <h3>Delete Employee</h3>
+        </div>
+        <div class="card-body">
+            <h5 class="text-danger mb-4">Are you sure you want to delete this employee?</h5>
+
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.EmpFirestName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.EmpFirestName)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.EmpMiddleName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.EmpMiddleName)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.EmpLastName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.EmpLastName)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.EmailId)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.EmailId)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PhoneNumber)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.PhoneNumber)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.EmpAddress)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.EmpAddress)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Salary)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Salary)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.EmpStatus)</dt>
+                <dd class="col-sm-9">
+                    <span class="badge @(Model.EmpStatus ? "bg-success" : "bg-secondary")">
+                        @(Model.EmpStatus ? "Active" : "Inactive")
+                    </span>
+                </dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Department)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Department.DepartmentName)</dd>
+            </dl>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <form asp-action="Delete" class="mb-0">
+                <input type="hidden" asp-for="EmpID" />
+                <input type="submit" value="Confirm Delete" class="btn btn-danger" />
+            </form>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left-circle"></i> Back to List
+            </a>
+        </div>
+    </div>
+</div>

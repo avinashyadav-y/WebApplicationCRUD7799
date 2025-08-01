@@ -1,0 +1,99 @@
+﻿@model WebApplicationCRUD.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!-- Styles to enhance form -->
+<style>
+    h1 {
+        color: #0d6efd;
+        font-weight: 600;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="card shadow border-primary">
+        <div class="card-header bg-primary text-white">
+            <h3>Edit Employee</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                <input type="hidden" asp-for="EmpID" />
+
+                <div class="mb-3">
+                    <label asp-for="EmpFirestName" class="form-label fw-semibold"></label>
+                    <input asp-for="EmpFirestName" class="form-control border-info" />
+                    <span asp-validation-for="EmpFirestName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EmpMiddleName" class="form-label fw-semibold"></label>
+                    <input asp-for="EmpMiddleName" class="form-control border-info" />
+                    <span asp-validation-for="EmpMiddleName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EmpLastName" class="form-label fw-semibold"></label>
+                    <input asp-for="EmpLastName" class="form-control border-info" />
+                    <span asp-validation-for="EmpLastName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EmailId" class="form-label fw-semibold"></label>
+                    <input asp-for="EmailId" class="form-control border-info" />
+                    <span asp-validation-for="EmailId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PhoneNumber" class="form-label fw-semibold"></label>
+                    <input asp-for="PhoneNumber" class="form-control border-info" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="EmpAddress" class="form-label fw-semibold"></label>
+                    <input asp-for="EmpAddress" class="form-control border-info" />
+                    <span asp-validation-for="EmpAddress" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Salary" class="form-label fw-semibold"></label>
+                    <input asp-for="Salary" class="form-control border-info" />
+                    <span asp-validation-for="Salary" class="text-danger"></span>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" asp-for="EmpStatus" />
+                    <label class="form-check-label fw-semibold" asp-for="EmpStatus">
+                        @Html.DisplayNameFor(model => model.EmpStatus)
+                    </label>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Dept_Id" class="form-label fw-semibold">Department</label>
+                    <select asp-for="Dept_Id" class="form-control border-info">
+                        <option value="">-------Select Department---------</option>
+                        @foreach (var item in ViewBag.Departments)
+                        {
+                            <option value="@item.Dept_Id">@item.DepartmentName</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Dept_Id" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    <input type="submit" value="Update" class="btn btn-success px-4" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

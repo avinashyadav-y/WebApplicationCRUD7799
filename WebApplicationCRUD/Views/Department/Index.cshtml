@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebApplicationCRUD.Models.Department>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    h1 {
+        color: #0d6efd;
+        font-weight: 600;
+    }
+
+    .action-buttons a {
+        margin-right: 10px;
+        text-decoration: none;
+    }
+
+    .action-buttons .btn {
+        padding: 4px 10px;
+        font-size: 0.9rem;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">Department List</h4>
+            <a asp-action="Create" class="btn btn-success">+ Create New</a>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered table-hover text-center align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().DepartmentName)</th>
+                        <th style="width: 250px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.DepartmentName)</td>
+                            <td class="action-buttons">
+                                <a asp-action="Edit" asp-route-id="@item.Dept_Id" class="btn btn-warning btn-sm">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.Dept_Id" class="btn btn-info btn-sm text-white">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Dept_Id" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        @if (TempData["Success"] != null)
+        {
+                @:toastr.success(@TempData["Success"])
+        }
+    </script>
+}
