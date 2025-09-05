@@ -122,10 +122,8 @@ namespace WebApplicationCRUD.Controllers
             }
             ViewBag.Departments = await db.departments.ToListAsync();
             return View(obj);
-
-        
-            
-            
+               
+           
         }
 
     }

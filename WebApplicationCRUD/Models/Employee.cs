@@ -11,7 +11,7 @@ namespace WebApplicationCRUD.Models
         public int EmpID { get; set; }
 
         [Required(ErrorMessage = "Please Enter Firest Name")]
-        [DisplayName ("Firest Name")]
+        [DisplayName ("First Name")]
         public string EmpFirestName { get; set; }
 
         [Required(ErrorMessage = "Please Enter Middle Name")]
